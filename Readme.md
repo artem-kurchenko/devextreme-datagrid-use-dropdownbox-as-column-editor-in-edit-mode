@@ -3,6 +3,9 @@
 
 <!-- default file list end -->
 # DataGrid - How to use DropDownBox as a column editor in edit mode
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t548916)**
+<!-- run online end -->
 
 
 <p>This example illustrates how to use <a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/">dxDropDownBox</a> with an embedded <a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/">dxDataGrid</a> for editing data. Run the example and check the State column to see this approach in action.<br><br>Click the "Show Implementation Details" link to see step-by-step instructions.<br><br><strong>See also<br></strong><a href="https://www.devexpress.com/Support/Center/p/T576412">DataGrid - How to use DropDownBox as a column editor in edit mode</a><strong><br></strong></p>
