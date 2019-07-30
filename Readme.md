@@ -4,7 +4,7 @@
 <!-- default file list end -->
 # DataGrid - How to use DropDownBox as a column editor in edit mode
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t548916)**
+**[[Run Online]](https://codecentral.devexpress.com/t548916/)**
 <!-- run online end -->
 
 
