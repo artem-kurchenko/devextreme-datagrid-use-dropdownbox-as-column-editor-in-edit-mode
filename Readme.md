@@ -3,67 +3,57 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T548916)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-<!-- default file list end -->
 # DataGrid - How to use DropDownBox as a column editor in edit mode
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t548916/)**
-<!-- run online end -->
 
+This example illustrates how to use [dxDropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [dxDataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for editing data. Run the example and check the State column to see this approach in action.
 
-<p>This example illustrates how to use <a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/">dxDropDownBox</a> with an embedded <a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/">dxDataGrid</a> for editing data. Run the example and check the State column to see this approach in action.<br><br>Click the "Show Implementation Details" link to see step-by-step instructions.<br><br><strong>See also<br></strong><a href="https://www.devexpress.com/Support/Center/p/T576412">DataGrid - How to use DropDownBox as a column editor in edit mode</a><strong><br></strong></p>
+**See also** [DataGrid - How to use DropDownBox as a column editor in edit mode](https://www.devexpress.com/Support/Center/p/T576412)
 
+## Description
 
-<h3>Description</h3>
-
-<p>Perform the following steps to complete this task:&nbsp;<br><br>1. Define the&nbsp;<a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing">onEditorPreparing</a>&nbsp;handler and change the editorName and editorOptions parameters to specify dxDropDownBox settings</p>
-<code lang="js">onEditorPreparing: function (e) {
-            if (e.dataField == "StateID" &amp;&amp; e.parentType == "dataRow") {
-                e.editorName = "dxDropDownBox";                
-                e.editorOptions.dropDownOptions = {                
-                    height: 500
-                };
-                e.editorOptions.contentTemplate = function (args, container) { 
-                    //custom template
-                }
-            }
-},
-</code>
-<p>&nbsp;</p>
-<p>2. Implement the contentTemplate&nbsp;function to define dxDataGrid&nbsp;and handle its&nbsp;<a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onSelectionChanged">selectionChanged</a>&nbsp;event to pass selected keys to dxDropDownBox. In addition, handle the&nbsp;<a href="https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged">dxDropDownBox.valueChanged</a>&nbsp;event&nbsp;to adjust dxDataGrid selection</p>
-<code lang="js">                e.editorOptions.contentTemplate = function (args, container) {
-                     var value = args.component.option("value"),
-                        $dataGrid = $("&lt;div&gt;").dxDataGrid({                           
-                            dataSource: args.component.option("dataSource"),
-                            keyExpr: "ID",
-                           .....
-                            selection: { mode: "multiple" },
-                            selectedRowKeys: value,
-                            onSelectionChanged: function (selectedItems) {
-                                var keys = selectedItems.selectedRowKeys;
-                                args.component.option("value", keys);
-                            }
-                        });
-                     var dataGrid = $dataGrid.dxDataGrid("instance");
-                     args.component.on("valueChanged", function (args) {
-                        var value = args.value;
-                        dataGrid.selectRows(value, false);
-                    });
-                    container.append($dataGrid);
-                    $("&lt;div&gt;").dxButton({
-                        text: "Close",
-                         onClick: function (ev) {
-                            args.component.close();
-                        }
-                    }).css({ float: "right", marginTop: "10px" }).appendTo(container);
-                    return container;
-                 };
+Perform the following steps to complete this task
+1. Define the [onEditorPreparing](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing) handler and change the editorName and editorOptions parameters to specify dxDropDownBox settings.
+```javascript
+function onEditorPreparing(e) {
+    if (e.dataField == "StateID" && e.parentType == "dataRow") {
+        e.editorName = "dxDropDownBox";                
+        e.editorOptions.dropDownOptions = {                
+            height: 500
+        };
+        e.editorOptions.contentTemplate = function (args, container) { 
+            //custom template;
+        }
+    }
 }
-</code>
-<p>&nbsp;</p>
-
-<br/>
-
-
+```
+2. Implement the contentTemplate function to define dxDataGrid and handle its [selectionChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onSelectionChanged) event to pass selected keys to dxDropDownBox. In addition, handle the [dxDropDownBox.valueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged) event to adjust dxDataGrid selection
+```javascript
+e.editorOptions.contentTemplate = function (args, container) {
+    var value = args.component.option("value"),
+    $dataGrid = $("<div>").dxDataGrid({                           
+       dataSource: args.component.option("dataSource"),
+       keyExpr: "ID",
+       //code
+       selection: { mode: "multiple" },
+       selectedRowKeys: value,
+       onSelectionChanged: function (selectedItems) {
+          var keys = selectedItems.selectedRowKeys;
+          args.component.option("value", keys);
+       }
+    });
+    var dataGrid = $dataGrid.dxDataGrid("instance");
+    args.component.on("valueChanged", function (args) {
+       var value = args.value;
+       dataGrid.selectRows(value, false);
+    });
+    container.append($dataGrid);
+    $("<div>").dxButton({
+       text: "Close",
+        onClick: function (ev) {
+           args.component.close();
+       }
+    }).css({ float: "right", marginTop: "10px" }).appendTo(container);
+    return container;
+};
+```
