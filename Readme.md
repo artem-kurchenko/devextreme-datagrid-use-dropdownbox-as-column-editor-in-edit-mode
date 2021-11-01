@@ -14,46 +14,46 @@ This example illustrates how to use [dxDropDownBox](https://js.devexpress.com/Do
 
 Perform the following steps to complete this task
 1. Define the [onEditorPreparing](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing) handler and change the editorName and editorOptions parameters to specify dxDropDownBox settings.
-```javascript
-function onEditorPreparing(e) {
-    if (e.dataField == "StateID" && e.parentType == "dataRow") {
-        e.editorName = "dxDropDownBox";                
-        e.editorOptions.dropDownOptions = {                
-            height: 500
-        };
-        e.editorOptions.contentTemplate = function (args, container) { 
-            //custom template;
-        }
-    }
-}
-```
+   ```javascript
+   function onEditorPreparing(e) {
+       if (e.dataField == "StateID" && e.parentType == "dataRow") {
+           e.editorName = "dxDropDownBox";                
+           e.editorOptions.dropDownOptions = {                
+               height: 500
+           };
+           e.editorOptions.contentTemplate = function (args, container) { 
+               //custom template;
+           }
+       }
+   }
+   ```
 2. Implement the contentTemplate function to define dxDataGrid and handle its [selectionChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onSelectionChanged) event to pass selected keys to dxDropDownBox. In addition, handle the [dxDropDownBox.valueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged) event to adjust dxDataGrid selection
-```javascript
-e.editorOptions.contentTemplate = function (args, container) {
-    var value = args.component.option("value"),
-    $dataGrid = $("<div>").dxDataGrid({                           
-       dataSource: args.component.option("dataSource"),
-       keyExpr: "ID",
-       //code
-       selection: { mode: "multiple" },
-       selectedRowKeys: value,
-       onSelectionChanged: function (selectedItems) {
-          var keys = selectedItems.selectedRowKeys;
-          args.component.option("value", keys);
-       }
-    });
-    var dataGrid = $dataGrid.dxDataGrid("instance");
-    args.component.on("valueChanged", function (args) {
-       var value = args.value;
-       dataGrid.selectRows(value, false);
-    });
-    container.append($dataGrid);
-    $("<div>").dxButton({
-       text: "Close",
-        onClick: function (ev) {
-           args.component.close();
-       }
-    }).css({ float: "right", marginTop: "10px" }).appendTo(container);
-    return container;
-};
-```
+   ```javascript
+   e.editorOptions.contentTemplate = function (args, container) {
+       var value = args.component.option("value"),
+       $dataGrid = $("<div>").dxDataGrid({                           
+          dataSource: args.component.option("dataSource"),
+          keyExpr: "ID",
+          //code
+          selection: { mode: "multiple" },
+          selectedRowKeys: value,
+          onSelectionChanged: function (selectedItems) {
+             var keys = selectedItems.selectedRowKeys;
+             args.component.option("value", keys);
+          }
+       });
+       var dataGrid = $dataGrid.dxDataGrid("instance");
+       args.component.on("valueChanged", function (args) {
+          var value = args.value;
+          dataGrid.selectRows(value, false);
+       });
+       container.append($dataGrid);
+       $("<div>").dxButton({
+          text: "Close",
+           onClick: function (ev) {
+              args.component.close();
+          }
+       }).css({ float: "right", marginTop: "10px" }).appendTo(container);
+       return container;
+   };
+   ```
