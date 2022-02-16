@@ -6,13 +6,13 @@
 
 # DataGrid - How to use DropDownBox as a column editor in edit mode
 
-This example illustrates how to define [dxDropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [dxDataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for the State column.
+This example illustrates how to define [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for the State column.
 
 ![use-dropdownbox](use-dropdownbox-as-a-column-editor.png)
 
 ## Implementation Details
 
-1. Handle the [onEditorPreparing](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing) event. In the event handler, change the editorName and [editorOptions](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columns/#editorOptions) parameters to specify the [dxDropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) settings.
+1. Handle the [onEditorPreparing](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing) event. In the event handler, change the editorName and [editorOptions](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columns/#editorOptions) parameters to specify the [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) settings.
 
    ```javascript
    function onEditorPreparing(e) {
@@ -28,8 +28,8 @@ This example illustrates how to define [dxDropDownBox](https://js.devexpress.com
    }
    ```
 2. Implement the [contentTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxPopup/Configuration/#contentTemplate) function. In this template: 
-   - Define dxDataGrid and handle its [selectionChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onSelectionChanged) event to pass the selected keys to dxDropDownBox. 
-   - Handle the [dxDropDownBox.valueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged) event to adjust dxDataGrid selection.
+   - Define DataGrid and handle its [selectionChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onSelectionChanged) event to pass the selected keys to dxDropDownBox. 
+   - Handle the [DropDownBox.valueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/Configuration/#onValueChanged) event to adjust DataGrid selection.
 
    ```javascript
    e.editorOptions.contentTemplate = function (args, container) {
