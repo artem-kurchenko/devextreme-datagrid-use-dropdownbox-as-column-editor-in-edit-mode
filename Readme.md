@@ -63,7 +63,6 @@ This example illustrates how to define [dxDropDownBox](https://js.devexpress.com
 
 ## Files to Look At
 
-**jQuery**:
 - [index.html](/jQuery/index.html)
 - [script.js](/jQuery/script.js)
 
