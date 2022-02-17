@@ -6,7 +6,7 @@
 
 # DataGrid - How to use DropDownBox as a column editor in edit mode
 
-This example illustrates how to define [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for the State column.
+This example illustrates how to define a [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for the State column.
 
 ![use-dropdownbox](use-dropdownbox-as-a-column-editor.png)
 
