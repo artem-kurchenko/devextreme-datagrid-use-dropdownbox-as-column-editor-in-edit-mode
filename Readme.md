@@ -10,6 +10,12 @@ This example illustrates how to define a [DropDownBox](https://js.devexpress.com
 
 ![use-dropdownbox](use-dropdownbox-as-a-column-editor.png)
 
+## Files to Review
+
+- **jQuery**
+    - [index.html](jQuery/index.html)
+    - [script.js](jQuery/script.js)
+
 ## Implementation Details
 
 1. Handle the [onEditorPreparing](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/Configuration/#onEditorPreparing) event. In the event handler, change the editorName and [editorOptions](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/columns/#editorOptions) parameters to specify the [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) settings.
@@ -60,11 +66,6 @@ This example illustrates how to define a [DropDownBox](https://js.devexpress.com
        return container;
    };
    ```
-
-## Files to Look At
-
-- [index.html](/jQuery/index.html)
-- [script.js](/jQuery/script.js)
 
 ## Documentation
 
