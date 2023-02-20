@@ -8,7 +8,7 @@
 
 This example illustrates how to define a [DropDownBox](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDropDownBox/) with an embedded [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Widgets/dxDataGrid/) for the State column.
 
-![use-dropdownbox](use-dropdownbox-as-a-column-editor.png)
+<div align="center"><img src="use-dropdownbox-as-a-column-editor.png" /></div>
 
 ## Files to Review
 
